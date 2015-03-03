@@ -1,0 +1,71 @@
+﻿@model LiveTiles.Controllers.NoticeBoardTile
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<style type="text/css">
+    h2 {
+        margin: 0;
+        color: #666;
+        padding-top: 90px;
+        font-size: 52px;
+        font-family: "trebuchet ms", sans-serif;
+    }
+
+    .item {
+        background: #333;
+        text-align: center;
+        height: 300px !important;
+    }
+
+    .carousel {
+        margin-top: 20px;
+    }
+
+    .bs-example {
+        margin: 20px;
+    }
+</style>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @for (int i = 0; i < @Model.Notices.Count(); i++)
+        {
+            if (i == 0)
+            {
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            }
+            else
+            {
+                <li data-target="#myCarousel" data-slide-to="0"></li>
+            }
+        }
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        @for (int i = 0; i < @Model.Notices.Count(); i++)
+        {
+            var c = "item";
+            if (i == 0) { c = "item active"; }
+            <div class="@c">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>@Model.Notices[i].Heading</h1>
+                        <p>@Model.Notices[i].Content</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+

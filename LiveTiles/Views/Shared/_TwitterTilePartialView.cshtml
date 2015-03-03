@@ -1,0 +1,19 @@
+﻿@model List<LiveTiles.Controllers.TweetDisplay>
+           
+
+<div class="container" >
+    <table class="table" >
+        <tbody>
+            @foreach(var t in @Model)
+            {
+            <tr>
+                <td><img src="@t.ImageUrl" width="42" height="42"></td>
+                <td>
+                    <h5>@t.Author</h5>
+                    <small>@t.Tweet</small>
+                </td>
+            </tr>
+           }
+        </tbody>
+    </table>
+</div>
